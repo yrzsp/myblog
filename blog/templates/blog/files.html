@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+
+{% block content1 %}
+    <div class="inner" id="content-inner">
+        <section class="post page archives">
+          <h3 class="archive-year-wrap">
+            <a href="/archives/2019" class="archive-year">
+              2019
+            </a>
+          </h3>
+
+
+      {% for article in article_list %}
+              <div class="archive">
+              <a class="post-go" href="{% url 'blog:article' article.id %}">
+                  <span class="date">
+                    {{article.create_time}}
+                  </span>
+                  <span class="slash">/</span>
+                  {{article.blog_title}}
+              </div>
+      {% endfor %}
+{% endblock content1 %}
+
+
+
+

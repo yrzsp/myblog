@@ -1,0 +1,39 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+<title>{{title}}</title>
+{% endblock title %}
+
+{% block content1 %}
+<!-------------------------------------------------------------------1--------------->
+<article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        {{title}}
+      </h1>
+      <span>
+
+        <time class="time" datetime="{{alter_date}}">
+        {{alter_date}}
+      </time>
+
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list">
+            <li class="article-tag-list-item">
+                <a class="article-tag-list-link" href="{% url 'blog:archives' label %}">{{label}}</a>
+            </li>
+        </ul>
+      </span>
+    </span>
+    </header>
+
+    <div class="post-content">
+        {{article|safe}}
+    </div>
+
+  </article>
+<!---------------------------------------------------------------------------------->
+{% endblock content1 %}

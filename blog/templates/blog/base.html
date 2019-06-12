@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="static/blog/js/jquery-3.3.1.min.js"></script>
+  	<script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+  	<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="{% static 'blog/css/myblog.css' %}">
+  	<link rel="icon" type="image/x-icon" href="{% static 'blog/images/logo.png' %}">
+  	{% block title%}
+    <title>python学习博客</title>
+  	{% endblock title%}
+
+
+    <!-- stylesheets list from config.yml -->
+
+    <link rel="stylesheet" href="{% static 'blog/css/pure-min.css' %}">
+  	<style type="text/css">
+
+  	</style>
+</head>
+<body>
+	<div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" style="text-transform:none;" href="/">
+    <img class="avatar" src="{% static 'blog/images/logo.png' %}">
+    <span class="title">MyBlog</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      <li class="pure-menu-item actived"><a href="/" class="pure-menu-link">首页</a></li>
+
+      <!--<li class="pure-menu-item"><a href="/archives" class="pure-menu-link">分类</a></li>-->
+
+      <li class="pure-menu-item"><a href="/label" class="pure-menu-link">分类</a></li>
+
+      <li class="pure-menu-item"><a href="/files" class="pure-menu-link">归档</a></li>
+
+      <li class="pure-menu-item"><a href="/about" class="pure-menu-link">关于</a></li>
+
+
+  </ul>
+
+</nav>
+  </div>
+
+<div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+
+        {% block content1 %}
+        {% endblock content1 %}
+
+        <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://www.onono.cn/">首页</a> |
+        <a class="bottom-item" href="https://github.com/15584418917" target="_blank">GitHub</a> |
+        <a class="bottom-item" href="https://bootstrap" target="_blank">Powered by yrzsp</a>
+    </div>
+</footer>
+</body>
+</html>

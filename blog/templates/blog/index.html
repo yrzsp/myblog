@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+{% block content1 %}
+{% for art in art_list %}
+<br>
+<article class="recent-post-item">
+        <a class="title" href="{% url 'blog:article' art.id %}"><h2>{{art.blog_title}}</h2></a>
+        <div class="post-meta">
+
+          <time class="time" datetime="{{art.alter_time}}">
+            {{art.alter_time}}&nbsp;/&nbsp;<a class="index-tag-list-link" href="{% url 'blog:article' art.id %}">{{art.blog_label}}</a>
+          </time>
+
+        </div>
+
+
+          <div class="post-excerpt">
+            <p>{{art.Content|striptags|truncatechars:100 }}</p>
+          </div>
+
+        <a class="more" href="{% url 'blog:article' art.id %}"> 阅读全文〉</a>
+      </article>
+{% endfor %}
+
+{% if art_list.object_list and art_list.paginator.num_pages > 1 %}
+<nav class="page-nav text-center">
+    {% if art_list.has_previous %}
+    <a class="extend prev" rel="prev" href="{% url 'blog:index_num' art_list.previous_page_number %}">〈</a>
+    {% endif %}
+    {% for page in page_range %}
+    {% if pg == page %}
+        <h3 style="color: blue;">{{page}}</h3>
+    {% else %}
+        <a class="page-number" href="{% url 'blog:index_num' page %}">{{page}}</a>
+    {% endif %}
+    {% endfor %}
+    {% if art_list.has_next %}
+    <a class="extend next" rel="next" href="{% url 'blog:index_num' art_list.next_page_number %}">〉</a>
+    {% endif %}
+</nav>
+{% endif %}
+
+{% endblock content1 %}
+

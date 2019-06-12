@@ -1,0 +1,32 @@
+<ul class="pagination">
+       <li > #按钮，点击左右翻页
+            {% if page_of_blogs.has_previous %} #有下一页
+               <a href="?page={{page_of_blogs.previous_page_number}}" aria-label="Previous">
+                   <span aria-hidden="true">«</span>#点击跳转下一页
+               </a>
+            {% else %}#没有下一页，没有a标签，点击按钮不会跳转
+               <span aria-hidden="true">«</span>
+            {% endif %}
+      </li> #显示分页的页码
+            {% for page_num in page_of_blogs.paginator.page_range %}#对分页的每一页进行迭代
+                 {% if page_num == page_of_blogs.number %} #如果有某一个页面是指定的页面
+                      <li class="active"><a href="?page={{page_num}}">{{page_num}} </a></li>
+                                        #就标记为cative，对应前端分页页码的显示会有颜色加深的效果
+                         {% else %}
+                      <li ><a href="?page={{page_num}}">{{page_num}} </a></li>#否则就显示分页页码
+                 {% endif %}
+            {% endfor %}
+      <li> #按钮，点击翻页
+            {% if page_of_blogs.has_next %}#如果后续有分页，按钮可点击
+                  <a href="?page={{page_of_blogs.next_page_number}}" aria-label="Previous">
+                      <span aria-hidden="true">«</span>
+                  </a>
+            {% else %}#没有分页，不可点击
+                  <span aria-hidden="true">«</span>
+            {% endif %}
+     </li>
+</ul>
+
+{% for art in art_list %}
+{{art.id}}-------{{art.blog_title}}
+{% endfor %}

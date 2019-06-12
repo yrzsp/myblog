@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+
+{% block content1 %}
+
+<div class="inner" id="content-inner">
+
+<div class="page tag-page" id="tag">
+  <h2 title="文章">{{label}}</h2>
+    {% for archives in archives_list %}
+        <div class="tag-item">
+
+            <a href="{% url 'blog:article' archives.id %}">
+              {{archives.blog_title}}
+            </a>
+
+          <time class="time" datetime="{{archives.alter_time}}">
+            {{archives.alter_time}}
+          </time>
+        </div>
+    {% endfor %}
+
+
+</div>
+    </div>
+
+{% endblock content1 %}

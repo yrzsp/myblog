@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+
+{% block content1 %}
+
+<div class="inner" id="content-inner">
+      <article class="post page" id="page">
+  <header class="post-header text-center">
+  </header>
+  <div class="post-content">
+      <ul class="tag-list">
+          {% for key,value in label_list %}
+          <li class="tag-list-item">
+              <a class="tag-list-link" href="{% url 'blog:archives' key %}">{{key}}</a><span class="tag-list-count">{{value}}</span>
+          </li>
+          {% endfor %}
+  </div>
+</article>
+    </div>
+
+
+
+{% endblock content1 %}
